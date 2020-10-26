@@ -51,7 +51,7 @@
 							 `purchase_item`, 
 							 `purchase_qty`, 
 							 `purchase_price`, 
-							 `purchase_total`) 
+							 `purchase_total`) 	
 							 VALUES 
 							('',
 							 '".$purchase_id."', 
