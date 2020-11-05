@@ -83,7 +83,7 @@ class dale{
     }
 
     public function tanggalHariIni(){
-        return date("d-m-Y");           
+        return date("Y-m-d");           
     }
 
     // querying data
