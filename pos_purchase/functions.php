@@ -13,51 +13,51 @@
 
 			$json_data[$i][1]['data']  = $data[$i] -> transaction_name;
 			$json_data[$i][1]['type']  = "text";
-
+			/*
 			$json_data[$i][2]['data']  = $data[$i] -> transaction_created_date;
 			$json_data[$i][2]['type']  = "date";
 			
 			$json_data[$i][3]['data']  = $data[$i] -> transaction_updated_date;
-			$json_data[$i][3]['type']  = "date";
+			$json_data[$i][3]['type']  = "date";*/
 
-			$json_data[$i][4]['data']  = $data[$i] -> transaction_fixed_date;
-			$json_data[$i][4]['type']  = "date";
+			$json_data[$i][2]['data']  = $data[$i] -> transaction_fixed_date;
+			$json_data[$i][2]['type']  = "date";
 
-			$json_data[$i][5]['data']  = $data[$i] -> transaction_amount;
-			$json_data[$i][5]['type']  = "price";
+			$json_data[$i][3]['data']  = $data[$i] -> transaction_amount;
+			$json_data[$i][3]['type']  = "price";
 
-			$json_data[$i][6]['data']  = $data[$i] -> transaction_switch;
-			$json_data[$i][6]['type']  = "text";
+			$json_data[$i][4]['data']  = $data[$i] -> transaction_switch;
+			$json_data[$i][4]['type']  = "text";
 
 			// status transaksi
 			// 100 - Dalam Proses
 			// 200 - Selesai
 			// 300 - Dibatalkan
-			$json_data[$i][7]['type']  = "badge";
+			$json_data[$i][5]['type']  = "badge";
 			if($data[$i] -> transaction_status == 100){
-				$json_data[$i][7]['data']  = "DALAM PROSES";
-				$json_data[$i][7]['class'] = "badge badge-warning";
+				$json_data[$i][5]['data']  = "DALAM PROSES";
+				$json_data[$i][5]['class'] = "badge badge-warning";
 			}
 			else if($data[$i] -> transaction_status == 200){
-				$json_data[$i][7]['data']  = "SELESAI";
-				$json_data[$i][7]['class'] = "badge badge-success";
+				$json_data[$i][5]['data']  = "SELESAI";
+				$json_data[$i][5]['class'] = "badge badge-success";
 			}
 			else if($data[$i] -> transaction_status == 300){
-				$json_data[$i][7]['data']  = "DIBATALKAN";
-				$json_data[$i][7]['class'] = "badge badge-danger";
+				$json_data[$i][5]['data']  = "DIBATALKAN";
+				$json_data[$i][5]['class'] = "badge badge-danger";
 			}
+			
+			
 		}
 
 		// table header
 		$json_header = [];
 		$json_header[0] = "ID Transaksi";
 		$json_header[1] = "Atas Nama";
-		$json_header[2] = "Tanggal Dibuat";
-		$json_header[3] = "Terakhir Diupdate";
-		$json_header[4] = "Waktu Selesai";
-		$json_header[5] = "Nominal Transaksi";
-		$json_header[6] = "Switch";
-		$json_header[7] = "Status";
+		$json_header[2] = "Waktu Selesai";
+		$json_header[3] = "Nominal Transaksi";
+		$json_header[4] = "Switch";
+		$json_header[5] = "Status";
 		$json_settings = array('search_index' => 1);
 
 		$output = array('raw_data'     => $json_data, 
@@ -72,7 +72,6 @@
 		$array_data = array();
 		$array_data['embed_item']  = getAllServicesAndProductData($dale);
 		$array_data['embed_staff'] = getAllStaff($dale);
-		$array_data['embed_name']  = getAllName($dale);
 
 		if($id != "NO_ID"){
 			$transaction = json_decode($dale -> kueri("SELECT * FROM `transaction` 

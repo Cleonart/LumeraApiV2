@@ -83,6 +83,7 @@ class dale{
     }
 
     public function tanggalHariIni(){
+        date_default_timezone_set('Asia/Makassar');
         return date("Y-m-d");           
     }
 
